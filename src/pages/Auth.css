@@ -1,0 +1,29 @@
+.signin-page {
+  margin: 3rem 3rem 0;
+  padding: 1rem;
+}
+.signin-page a {
+  color: var(--quiz-pri-color);
+}
+.auth-form {
+  width: 40%;
+  margin: 1rem auto;
+  padding: 3rem 2rem;
+  position: relative;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 0.5rem 1.5rem;
+  background-color: var(--grey-shade1);
+  border-radius: 1rem;
+}
+.log-input {
+  width: 20rem;
+  background: transparent;
+}
+.or-divider {
+  color: var(--quiz-pri-color);
+}
+.or-divider:after,
+.or-divider:before {
+  content: "\2003\2003\2003\2003\2003\2003";
+  text-decoration: line-through;
+  color: var(--quiz-pri-color);
+}
