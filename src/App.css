@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+:root {
+  --quiz-pri-color: #0f131f;
+  --quiz-sec-color: #e2e2e1;
+  --grey-shade1: #a7a8a9;
+  --blue-shade1: #19212c;
+  --blue-shade2: #2d3b4f;
+}
+.App {
+  background-color: var(--quiz-pri-color);
+  color: var(--quiz-sec-color);
+}
+.quiz-pri-btn {
+  padding: 4px 8px;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  border: 1px solid var(--quiz-sec-color);
+  color: var(--quiz-sec-color);
+  background-color: transparent;
+}
+.quiz-sec-btn {
+  padding: 4px 8px;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  border: 0;
+  color: var(--quiz-sec-color);
+  background-color: var(--quiz-pri-color);
+}
+.pl-5 {
+  padding-left: 5px;
+}
+
+@import url(https://patched-ui.netlify.app/utility-classes.css);
+@import url(https://patched-ui.netlify.app/styles.css);
