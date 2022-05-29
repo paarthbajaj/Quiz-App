@@ -1,36 +1,65 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useQuiz } from "../context/QuizContext";
 
 export const QuizQuestion = () => {
+  const { quizDispatch, quizState, currentQuestion } = useQuiz();
+  const [boolOption, setBoolOption] = useState("");
+  let navigate = useNavigate();
+  const addSelectedOptionClass = (selectedOption) => {
+    setBoolOption(selectedOption);
+  };
   return (
     <div className="quiz-question-page">
       <header className="txt-bold txt-3 txt-center pt-1">
-        Decode the code
+        {quizState.selectedQuiz}
       </header>
       <div className="question-card">
         <div className="question-card-header flex-row">
           <span className="grow-1">
             <span>Question:</span>
-            <span className="txt-spacing txt-bold pl-5">1/5</span>
+            <span className="txt-spacing txt-bold pl-5">
+              {quizState.counter + 1}/5
+            </span>
           </span>
           <span>
             <span>Score:</span>
-            <span className="txt-bold pl-5">0</span>
+            <span className="txt-bold pl-5">10 each</span>
           </span>
         </div>
         <div className="question-text txt-bold txt-center">
-          Is javascript a statically typed or a dynamically typed language?
+          {currentQuestion?.question}
         </div>
         <div className="options-list txt-center">
           <ul>
-            <li className="cursor-pointer">statically typed</li>
-            <li className="cursor-pointer">dynamically typed</li>
-            <li className="cursor-pointer">none</li>
+            {currentQuestion?.options.map((option) => (
+              <li
+                className={`options-list-item cursor-pointer ${
+                  boolOption == option.value ? "selected-options-list" : ""
+                }`}
+                key={option.code}
+                onClick={() => {
+                  addSelectedOptionClass(option.value);
+                  quizDispatch({ type: "SELECT_OPTION", payload: option });
+                }}
+              >
+                {option.value}
+              </li>
+            ))}
           </ul>
         </div>
         <div className="txt-right">
-          <Link to="/result">
-            <button className="btn continue-btn">Continue</button>
-          </Link>
+          <button
+            className="btn continue-btn"
+            onClick={() => {
+              quizState.counter < quizState.listOfQuestions.length - 1
+                ? quizDispatch({ type: "INCREASE_COUNTER" })
+                : navigate("/result");
+            }}
+          >
+            Continue
+          </button>
+          {console.log(quizState.counter)}
         </div>
       </div>
     </div>

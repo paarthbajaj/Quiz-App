@@ -12,8 +12,13 @@
   background-color: var(--blue-shade1);
   border-radius: 1.5rem;
 }
+.quiz-card a {
+  color: var(--quiz-sec-color);
+}
 .quiz-card img {
-  width: 100%;
+  height: 20rem;
+  width: 20rem;
+  object-fit: cover;
   border-radius: 1.5rem;
 }
 .quiz-card-info {
@@ -43,13 +48,22 @@
 .options-list ul {
   list-style: none;
 }
-.options-list li {
+.options-list-item {
   background-color: var(--blue-shade1);
   margin: 1.2rem 0;
   padding: 1rem 0;
   border-radius: 1rem;
 }
-.options-list li:hover {
+.result-options-list-item {
+  background-color: var(--blue-shade1);
+  margin: 1.2rem 0;
+  padding: 1rem 0;
+  border-radius: 1rem;
+}
+.options-list-item:hover {
+  background-color: var(--blue-shade2);
+}
+.selected-options-list {
   background-color: var(--blue-shade2);
 }
 .continue-btn {
@@ -68,4 +82,8 @@
 }
 .result-page-footer-button {
   margin: 4rem 0;
+}
+.right-answer {
+  background-color: var(--light-green);
+  color: var(--dark-green);
 }
