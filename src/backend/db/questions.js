@@ -13,6 +13,7 @@ export const questions = [
       { code: 4, value: "None" },
     ],
     answer: { code: 2 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -25,6 +26,7 @@ export const questions = [
       { code: 4, value: "All of the mentioned" },
     ],
     answer: { code: 4 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -38,6 +40,7 @@ export const questions = [
       { code: 4, value: "Location" },
     ],
     answer: { code: 1 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -51,6 +54,7 @@ export const questions = [
       { code: 4, value: "RMI" },
     ],
     answer: { code: 1 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -63,6 +67,7 @@ export const questions = [
       { code: 4, value: "Literal" },
     ],
     answer: { code: 3 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -75,6 +80,7 @@ export const questions = [
       { code: 4, value: "Brian Kernighan" },
     ],
     answer: { code: 3 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -88,6 +94,7 @@ export const questions = [
       { code: 4, value: "#include <userdefined>" },
     ],
     answer: { code: 2 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -100,6 +107,7 @@ export const questions = [
       { code: 4, value: "both // comment or /* comment */" },
     ],
     answer: { code: 4 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -113,6 +121,7 @@ export const questions = [
       { code: 4, value: "hff" },
     ],
     answer: { code: 3 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -125,6 +134,7 @@ export const questions = [
       { code: 4, value: "Friend constructor" },
     ],
     answer: { code: 4 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -138,6 +148,7 @@ export const questions = [
       { code: 4, value: "Web matrix" },
     ],
     answer: { code: 3 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -150,6 +161,7 @@ export const questions = [
       { code: 4, value: "<b>" },
     ],
     answer: { code: 2 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -162,6 +174,7 @@ export const questions = [
       { code: 4, value: "<source>" },
     ],
     answer: { code: 3 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -174,6 +187,7 @@ export const questions = [
       { code: 4, value: "PHP" },
     ],
     answer: { code: 1 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -186,6 +200,7 @@ export const questions = [
       { code: 4, value: "<blockquote>" },
     ],
     answer: { code: 3 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -199,6 +214,7 @@ export const questions = [
       { code: 4, value: "bootstrap" },
     ],
     answer: { code: 4 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -212,6 +228,7 @@ export const questions = [
       { code: 4, value: "both class and tag" },
     ],
     answer: { code: 2 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -225,6 +242,7 @@ export const questions = [
       { code: 4, value: "-webkit" },
     ],
     answer: { code: 4 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -238,6 +256,7 @@ export const questions = [
       { code: 4, value: "height" },
     ],
     answer: { code: 2 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -251,6 +270,7 @@ export const questions = [
       { code: 4, value: "none" },
     ],
     answer: { code: 2 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -264,6 +284,7 @@ export const questions = [
       { code: 4, value: "None" },
     ],
     answer: { code: 2 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -276,6 +297,7 @@ export const questions = [
       { code: 4, value: "None of the mentioned" },
     ],
     answer: { code: 2 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -288,6 +310,7 @@ export const questions = [
       { code: 4, value: "All of the mentioned" },
     ],
     answer: { code: 3 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -301,6 +324,7 @@ export const questions = [
       { code: 4, value: "PropTypes" },
     ],
     answer: { code: 1 },
+    selectedAnswer: { code: 0 },
   },
   {
     _id: uuid(),
@@ -314,5 +338,6 @@ export const questions = [
       { code: 4, value: "None of the above" },
     ],
     answer: { code: 1 },
+    selectedAnswer: { code: 0 },
   },
 ];
