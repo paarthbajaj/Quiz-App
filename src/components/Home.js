@@ -5,15 +5,34 @@ import { useQuiz } from "../context/QuizContext";
 import { RulesPopup } from "./RulesPopup";
 
 export const Home = () => {
-  const { quizDispatch, quizState } = useQuiz();
+  const { quizDispatch, quizState, navigate } = useQuiz();
   return (
     <div>
       <header className="quiz-header txt-bold txt-center pt-1">
-        {/* <div>
-        <i class="fas fa-sun"></i>
-          <i className="fas fa-sign-out"></i>
-          <i class="fas fa-moon"></i>
-        </div> */}
+        <div className="header-actions flex-row g-1 txt-4 mr-1">
+          <button
+            className="txt-4"
+            onClick={() =>
+              quizState.theme == "dark"
+                ? quizDispatch({ type: "SET_THEME", payload: "light" })
+                : quizDispatch({ type: "SET_THEME", payload: "dark" })
+            }
+          >
+            {quizState.theme == "dark" ? (
+              <i className="fas fa-sun cursor-pointer"></i>
+            ) : (
+              <i className="fas fa-moon cursor-pointer"></i>
+            )}
+          </button>
+
+          <i
+            className="fas fa-sign-out cursor-pointer"
+            onClick={() => {
+              localStorage.clear();
+              navigate("/");
+            }}
+          ></i>
+        </div>
         <h1>Knowledge, if it does not determine action, is dead to us</h1>
         <div className="quiz-categories">
           <ul className="flex-row mt-1">

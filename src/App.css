@@ -7,12 +7,19 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
-:root {
+.dark {
   --quiz-pri-color: #0f131f;
   --quiz-sec-color: #e2e2e1;
   --grey-shade1: #a7a8a9;
   --blue-shade1: #19212c;
   --blue-shade2: #2d3b4f;
+}
+.light {
+  --quiz-pri-color: #e2e2e1;
+  --quiz-sec-color: #0f131f;
+  --grey-shade1: #19212c;
+  --blue-shade1: #c2c2c2;
+  --blue-shade2: #b3d4ff;
 }
 .App {
   background-color: var(--quiz-pri-color);
