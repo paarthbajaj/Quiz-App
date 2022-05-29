@@ -55,11 +55,15 @@ export const QuizQuestion = () => {
               quizState.counter < quizState.listOfQuestions.length - 1
                 ? quizDispatch({ type: "INCREASE_COUNTER" })
                 : navigate("/result");
+
+              currentQuestion.answer.code ===
+              currentQuestion.selectedAnswer.code
+                ? quizDispatch({ type: "INCREASE_MARKS" })
+                : quizDispatch({ type: "DECREASE_MARKS" });
             }}
           >
             Continue
           </button>
-          {console.log(quizState.counter)}
         </div>
       </div>
     </div>

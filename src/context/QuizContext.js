@@ -1,7 +1,7 @@
 import { createContext, useContext, useReducer } from "react";
+import { QuizInfo } from "../backend/db/QuizInfo";
 
 const QuizContext = createContext();
-
 const QuizProvider = ({ children }) => {
   const quizReducer = (state, action) => {
     switch (action.type) {
@@ -19,13 +19,30 @@ const QuizProvider = ({ children }) => {
           currentQuestionn: state.listOfQuestions[state.counter],
         };
       case "SELECT_OPTION":
+        state.listOfQuestions[state.counter].selectedAnswer.code =
+          action.payload.code;
         return {
           ...state,
           selectedOption: [
             ...state.selectedOption.slice(0, state.counter),
             action.payload,
-            // ...state.selectedOption.slice(state.counter),
           ],
+        };
+      case "INCREASE_MARKS":
+        return { ...state, marks: state.marks + 10 };
+      case "DECREASE_MARKS":
+        return { ...state, marks: state.marks - 5 };
+      case "CLOSE_RULES_POPUP":
+        return { ...state, isPopupOpen: false };
+      case "OPEN_RULES_POPUP":
+        return { ...state, isPopupOpen: true };
+      case "SET_CATEGORY":
+        return {
+          ...state,
+          selectedCategory:
+            action.payload != "All"
+              ? QuizInfo.filter((quiz) => quiz.category == action.payload)
+              : QuizInfo,
         };
     }
   };
@@ -35,10 +52,11 @@ const QuizProvider = ({ children }) => {
     selectedQuiz: "",
     currentQuestionn: {},
     selectedOption: [],
+    marks: 0,
+    isPopupOpen: false,
+    selectedCategory: QuizInfo,
   };
   const [quizState, quizDispatch] = useReducer(quizReducer, initialState);
-
-  console.log(quizState);
   let currentQuestion = quizState.listOfQuestions[quizState.counter];
 
   return (
