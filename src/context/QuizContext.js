@@ -1,8 +1,10 @@
 import { createContext, useContext, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 import { QuizInfo } from "../backend/db/QuizInfo";
 
 const QuizContext = createContext();
 const QuizProvider = ({ children }) => {
+  let navigate = useNavigate();
   const quizReducer = (state, action) => {
     switch (action.type) {
       case "SET_QUESTIONS_LIST":
@@ -44,6 +46,8 @@ const QuizProvider = ({ children }) => {
               ? QuizInfo.filter((quiz) => quiz.category == action.payload)
               : QuizInfo,
         };
+      case "SET_THEME":
+        return { ...state, theme: action.payload };
     }
   };
   const initialState = {
@@ -55,12 +59,20 @@ const QuizProvider = ({ children }) => {
     marks: 0,
     isPopupOpen: false,
     selectedCategory: QuizInfo,
+    theme: "dark",
   };
   const [quizState, quizDispatch] = useReducer(quizReducer, initialState);
   let currentQuestion = quizState.listOfQuestions[quizState.counter];
 
   return (
-    <QuizContext.Provider value={{ quizState, quizDispatch, currentQuestion }}>
+    <QuizContext.Provider
+      value={{
+        quizState,
+        quizDispatch,
+        currentQuestion,
+        navigate,
+      }}
+    >
       {children}
     </QuizContext.Provider>
   );

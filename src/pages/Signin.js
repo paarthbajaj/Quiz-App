@@ -1,16 +1,10 @@
-import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Auth.css";
 import { users } from "../backend/db/users";
+import { useAuth } from "../context/AuthContext";
 
 export const Signin = () => {
-  const signinAsGuestHandler = async () => {
-    const { data } = await axios.post("/api/auth/login", {
-      email: users[0].email,
-      password: users[0].password,
-    });
-    localStorage.setItem("key", data.encodedToken);
-  };
+  const { signInAsGuest, signinClickHandler } = useAuth();
   return (
     <div className="signin-page">
       <h1 className="txt-center">Login to your account</h1>
@@ -38,12 +32,16 @@ export const Signin = () => {
           </span>
         </label>
         <Link to="/">
-          <button className="quiz-sec-btn" type="submit">
+          <button
+            className="quiz-sec-btn"
+            type="submit"
+            onClick={signinClickHandler}
+          >
             Sign In
           </button>
         </Link>
         <Link to="/home">
-          <span onClick={signinAsGuestHandler}>Sign In As Guest</span>
+          <span onClick={signInAsGuest}>Sign In As Guest</span>
         </Link>
         <span className="or-divider">OR</span>
         <Link to="/signup">

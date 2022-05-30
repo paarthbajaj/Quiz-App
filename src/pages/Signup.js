@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import "./Auth.css";
 export const Signup = () => {
+  const { signupClickHandler } = useAuth();
   return (
     <div className="signin-page">
       <h1 className="txt-center">Sign Up to HubNote</h1>
@@ -50,7 +52,11 @@ export const Signup = () => {
           </span>
         </label>
         <Link to="/home">
-          <button className="quiz-sec-btn" type="submit">
+          <button
+            className="quiz-sec-btn"
+            type="submit"
+            onClick={signupClickHandler}
+          >
             Sign Up
           </button>
         </Link>

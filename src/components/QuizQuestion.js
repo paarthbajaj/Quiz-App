@@ -1,11 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useQuiz } from "../context/QuizContext";
 
 export const QuizQuestion = () => {
-  const { quizDispatch, quizState, currentQuestion } = useQuiz();
+  const { quizDispatch, quizState, currentQuestion, navigate } = useQuiz();
   const [boolOption, setBoolOption] = useState("");
-  let navigate = useNavigate();
   const addSelectedOptionClass = (selectedOption) => {
     setBoolOption(selectedOption);
   };
