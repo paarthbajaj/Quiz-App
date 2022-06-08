@@ -24,6 +24,7 @@
 .App {
   background-color: var(--quiz-pri-color);
   color: var(--quiz-sec-color);
+  min-height: 100vh;
 }
 .quiz-pri-btn {
   padding: 4px 8px;
