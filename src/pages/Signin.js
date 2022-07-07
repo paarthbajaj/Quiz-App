@@ -2,29 +2,46 @@ import { Link } from "react-router-dom";
 import "./Auth.css";
 import { users } from "../backend/db/users";
 import { useAuth } from "../context/AuthContext";
+import { useEffect } from "react";
 
 export const Signin = () => {
-  const { signInAsGuest, signinClickHandler } = useAuth();
+  const {
+    signInAsGuest,
+    signinClickHandler,
+    toast,
+    setToast,
+    authState,
+    authDispatch,
+  } = useAuth();
+  useEffect(() => {
+    authDispatch({ type: "EDIT_EMAIL", payload: "" });
+    authDispatch({ type: "EDIT_PASSWORD", payload: "" });
+  }, []);
   return (
     <div className="signin-page">
       <h1 className="txt-center">Login to your account</h1>
       <form className="auth-form flex-column g-1 align-center justify-center">
         <label className="log-input">
           <input
-            className="input log-input req-input"
+            className="input log-input"
             type="email"
             placeholder="Email"
             required
+            onChange={(e) =>
+              authDispatch({ type: "EDIT_EMAIL", payload: e.target.value })
+            }
           />
           <span className="error">Please enter your email</span>
         </label>
         <label className="log-input">
           <input
-            className="input log-input req-input"
+            className="input log-input"
             type="password"
             placeholder="Password"
-            pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
             required
+            onChange={(e) =>
+              authDispatch({ type: "EDIT_PASSWORD", payload: e.target.value })
+            }
           />
           <span className="error">
             Password must contain eight characters, at least one letter, one
@@ -35,7 +52,17 @@ export const Signin = () => {
           <button
             className="quiz-sec-btn"
             type="submit"
-            onClick={signinClickHandler}
+            onClick={(e) => {
+              e.preventDefault();
+              authState.email == "" || authState.password == ""
+                ? setToast({
+                    ...toast,
+                    showToast: true,
+                    type: "alert-warning",
+                    message: "Please fill the fields",
+                  })
+                : signinClickHandler();
+            }}
           >
             Sign In
           </button>

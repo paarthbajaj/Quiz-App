@@ -3,6 +3,7 @@ import "./App.css";
 import { Home } from "./components/Home";
 import { QuizQuestion } from "./components/QuizQuestion";
 import { Result } from "./components/Result";
+import { Toast } from "./components/Toast";
 import { useQuiz } from "./context/QuizContext";
 import { Signin } from "./pages/Signin";
 import { Signup } from "./pages/Signup";
@@ -11,6 +12,7 @@ function App() {
   const { quizState } = useQuiz();
   return (
     <div className={`App ${quizState.theme}`}>
+      <Toast />
       <Routes>
         <Route path="/" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
