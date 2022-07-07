@@ -1,10 +1,15 @@
 import axios from "axios";
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { users } from "../backend/db/users";
 const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
+  const [toast, setToast] = useState({
+    showToast: true,
+    type: "",
+    message: "",
+  });
   let navigate = useNavigate();
   const signInAsGuest = async () => {
     try {
@@ -17,8 +22,7 @@ const AuthContextProvider = ({ children }) => {
       console.log(err);
     }
   };
-  const signupClickHandler = async (e) => {
-    e.preventDefault();
+  const signupClickHandler = async () => {
     try {
       const signupRes = await axios.post("/api/auth/signup", {
         email: authState.email,
@@ -32,8 +36,7 @@ const AuthContextProvider = ({ children }) => {
       console.log(err);
     }
   };
-  const signinClickHandler = async (e) => {
-    e.preventDefault();
+  const signinClickHandler = async () => {
     try {
       const signinRes = await axios.post("/api/auth/login", {
         email: authState.email,
@@ -43,6 +46,12 @@ const AuthContextProvider = ({ children }) => {
       navigate("/home");
     } catch (err) {
       console.log(err);
+      setToast({
+        ...toast,
+        showToast: true,
+        type: "alert-danger",
+        message: err.response.data.errors[0],
+      });
     }
   };
   const authReducer = (state, action) => {
@@ -71,6 +80,8 @@ const AuthContextProvider = ({ children }) => {
         signinClickHandler,
         authState,
         authDispatch,
+        toast,
+        setToast,
       }}
     >
       {children}
